@@ -2,6 +2,7 @@
 
 <table>
     <tr>
+        <th>id</th>
         <th>nombre</th>
         <th>documento</th>
         <th>correo</th>
@@ -10,6 +11,7 @@
 
     <?php foreach ($clientes as $clienteModel): ?>
     <tr>
+        <td><?= $clienteModel['id'] ?></td>
         <td><?= $clienteModel['nombre'] ?></td>
         <td><?= $clienteModel['documento'] ?></td>
         <td><?= $clienteModel['correo'] ?></td>
