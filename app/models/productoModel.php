@@ -18,9 +18,11 @@ class productoModel
         p.id,
         p.nombre,
         p.precio,
-        p.categoria,
+        c.nombre AS categoria,
         pr.nombre AS proveedor
-        FROM producto p JOIN proveedor pr ON p.id_proveedor=pr.id";
+        FROM producto p
+        JOIN proveedor pr ON p.id_proveedor=pr.id
+        JOIN categoria c ON p.id_categoria=c.id";
 
         $consulta = $this->connection->query($sql);
         return $consulta->fetchALL(PDO::FETCH_ASSOC);
@@ -30,7 +32,6 @@ class productoModel
     {
         $sql = "SELECT * FROM producto WHERE id = $id";
 
-         $consulta = $this->connection->query($sql);
-
+        $consulta = $this->connection->query($sql);
         return $consulta->fetch(PDO::FETCH_ASSOC);}
 }
