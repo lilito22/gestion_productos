@@ -6,6 +6,7 @@
         <th>nombre</th>
         <th>precio</th>
         <th>categoria</th>
+        <th>proveedor</th>
     </tr>
 
     <?php foreach ($productos as $productoModel): ?>
@@ -14,6 +15,7 @@
         <td><?= $productoModel['nombre'] ?></td>
         <td><?= $productoModel['precio'] ?></td>
         <td><?= $productoModel['categoria'] ?></td>
+        <td><?= $productoModel['proveedor'] ?></td>
     </tr>
     <?php endforeach; ?>
 </table>
