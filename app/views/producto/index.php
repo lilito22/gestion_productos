@@ -19,3 +19,17 @@
     </tr>
     <?php endforeach; ?>
 </table>
+
+<h1>producto consultado</h1>
+
+<table>
+    <tr>
+        <th>nombre</th>
+        <th>precio</th>
+    </tr>
+
+    <tr>
+        <td><?= $productoConsultado['nombre'] ?></td>
+        <td><?= $productoConsultado['precio'] ?></td>
+    </tr>
+</table>
