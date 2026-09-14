@@ -28,8 +28,10 @@
         <th>precio</th>
     </tr>
 
+<?php foreach ($productoConsultado as $producto): ?>
     <tr>
-        <td><?= $productoConsultado['nombre'] ?></td>
-        <td><?= $productoConsultado['precio'] ?></td>
+        <td><?= $producto['nombre'] ?></td>
+        <td><?= $producto['precio'] ?></td>
     </tr>
+    <?php endforeach; ?>
 </table>

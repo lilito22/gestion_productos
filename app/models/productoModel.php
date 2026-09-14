@@ -30,8 +30,10 @@ class productoModel
 
     public function getByid($id)
     {
-        $sql = "SELECT * FROM producto WHERE id = $id";
+        $sql = "SELECT * FROM producto WHERE id = :id";
 
-        $consulta = $this->connection->query($sql);
-        return $consulta->fetch(PDO::FETCH_ASSOC);}
+        $consulta = $this->connection->prepare($sql);
+        $consulta->bindParam(":id", $id);
+        $consulta->execute();
+        return $consulta->fetchALL(PDO::FETCH_ASSOC);}
 }
