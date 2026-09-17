@@ -1,6 +1,7 @@
 <?php
 
-class Database {
+class Database
+{
     private $host;
     private $port;
     private $dbname;
@@ -10,7 +11,7 @@ class Database {
 
     public function __construct()
     {
-        $env = parse_ini_file (__DIR__ . "/../.env");
+        $env = parse_ini_file(__DIR__ . "/../.env");
 
         $this->host = $env['DB_HOST'];
         $this->port = $env['DB_PORT'];
@@ -20,10 +21,16 @@ class Database {
     }
 
     public function connect(){
-        $dsn = "mysql:host={$this->host};port={$this->port};dbname={$this->dbname}";
+        try{
+            $dsn = "mysql:host={$this->host};port={$this->port};dbname={$this->dbname}";
 
-        $this->connection = new PDO ($dsn,$this->user,$this->password);
+            $this->connection = new PDO($dsn, $this->user, $this->password);
 
-        return $this->connection;
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            return $this->connection;
+        } catch (PDOException $e){
+            echo "ocurrio un error: " . $e->getMessage();
+        }
     }
 }
