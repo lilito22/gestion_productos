@@ -1,4 +1,5 @@
 <h1>Listado de categoria</h1>
+<?php if (!empty($categorias)){ ?>
 
 <table>
     <tr>
@@ -15,3 +16,7 @@
     </tr>
     <?php endforeach; ?>
 </table>
+
+<?php } else{ ?>
+<p> no hay categorias para mostrar</p>
+<?php } ?>

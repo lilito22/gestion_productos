@@ -1,4 +1,5 @@
 <h1>Listado de Productos</h1>
+<?php if (!empty($productos)){ ?>
 
 <table>
     <tr>
@@ -20,7 +21,12 @@
     <?php endforeach; ?>
 </table>
 
+<?php } else{ ?>
+<p> no hay productos para mostrar</p>
+<?php } ?>
+
 <h1>producto consultado</h1>
+<?php if (!empty($productoConsultado)){ ?>
 
 <table>
     <tr>
@@ -35,3 +41,7 @@
     </tr>
     <?php endforeach; ?>
 </table>
+
+<?php } else{ ?>
+<p> no hay productos consultados para mostrar</p>
+<?php } ?>

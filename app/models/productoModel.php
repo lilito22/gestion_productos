@@ -8,18 +8,13 @@ class productoModel
 
     public function __construct()
     {
-        try {
-            $database = new Database();
-            $this->connection = $database->connect();
-        } catch (PDOException $e) {
-            echo "error aqui: " . $e->getMessage();
-        }
+        $database = new Database();
+        $this->connection = $database->connect();
     }
 
     public function getALL()
     {
-        try {
-            $sql = "SELECT 
+        $sql = "SELECT 
         p.id,
         p.nombre,
         p.precio,
@@ -29,25 +24,17 @@ class productoModel
         JOIN proveedor pr ON p.id_proveedor=pr.id
         JOIN categoria c ON p.id_categoria=c.id";
 
-            $consulta = $this->connection->query($sql);
-            return $consulta->fetchALL(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            echo "error aqui: " . $e->getMessage();
-        }
+        $consulta = $this->connection->query($sql);
+        return $consulta->fetchALL(PDO::FETCH_ASSOC);
     }
 
     public function getByid($id)
     {
-        try {
-            $sql = "SELECT * FROM producto WHERE id = :id";
+        $sql = "SELECT * FROM producto WHERE id = :id";
 
-            $consulta = $this->connection->prepare($sql);
-            $consulta->bindParam(":id", $id);
-            $consulta->execute();
-            return $consulta->fetchALL(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            echo "error aqui: " . $e->getMessage();
-        }
-
+        $consulta = $this->connection->prepare($sql);
+        $consulta->bindParam(":id", $id);
+        $consulta->execute();
+        return $consulta->fetchALL(PDO::FETCH_ASSOC);
     }
 }
